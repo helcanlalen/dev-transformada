@@ -2,13 +2,6 @@
     "body": {
 
       "productId": .body.productId,
-      "masterArrangementId": .body.masterArrangementId,
-      "roleName": .body.roleName,
-      "transactionAmount": .body.transactionAmount,
-      "reason": .body.reason,
-      "simulationRunReference": .body.simulationRunReference,
-      "branch": .body.branch,
-      "lineOfBusiness": .body.lineOfBusiness,
       "UUID": .body.UUID,
       "Terminal": .body.Terminal,
       "Channel": .body.Channel,
@@ -80,10 +73,6 @@
             {
               "fieldName": "Ent.Q.Autorizo",
               "fieldValue": .body.properties[0].ACCOUNT."Ent.Q.Autorizo"
-            },
-            {
-              "fieldName": "Fech.Acta.Aprob",
-              "fieldValue": .body.properties[0].ACCOUNT."Fech.Acta.Aprob"
             },
             {
               "fieldName": "Fech.Acta.Aprob",
@@ -368,6 +357,22 @@
             {
               "fieldName": "PAYOUT.SETTLEMENT:1",
               "fieldValue": .body.properties[5].SETTLEMENT."PAYOUT.SETTLEMENT:1"
+            }
+             {
+              "fieldName": "TIPO.CTA.DEBITO",
+              "fieldValue": .body.properties[5].SETTLEMENT."TIPO.CTA.DEBITO"
+            },
+             {
+              "fieldName": "CTA.DEBITO",
+              "fieldValue": .body.properties[5].SETTLEMENT."CTA.DEBITO"
+            },
+             {
+              "fieldName": "TIPO.CTA.CREDIT",
+              "fieldValue": .body.properties[5].SETTLEMENT."TIPO.CTA.CREDIT"
+            },
+             {
+              "fieldName": "CTA.CREDITO",
+              "fieldValue": .body.properties[5].SETTLEMENT."CTA.CREDITO"
             }
           ]
         },        {

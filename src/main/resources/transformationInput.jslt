@@ -242,7 +242,7 @@
               "fieldValue": .body.properties[0].ACCOUNT."CONSTRUCTOR"
             },
             {
-              "fieldName": "L.PROYECTO",
+              "fieldName": "PROYECTO",
               "fieldValue": .body.properties[0].ACCOUNT."PROYECTO"
             },
             {

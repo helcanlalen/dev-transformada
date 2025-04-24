@@ -75,7 +75,7 @@ public class KafkaToLogRoute extends RouteBuilder {
             })
             // Transform the input using JSLT
             .to("jslt:classpath:transformationInput.jslt")
-            .log("Transformed1 JSON: ${body}")
+            .log("Transformed2 JSON: ${body}")
             
             // ISSUE: The InOnly exchange pattern prevents the route from waiting for a response
             // FIXED: Removed this pattern to allow request-reply pattern to work

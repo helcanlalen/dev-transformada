@@ -494,6 +494,9 @@
                }, {
                   "fieldName":"START.DATE:4:1",
                   "fieldValue": .body.properties[10].SCHEDULE."START.DATE:4:1"
+               }, {
+                  "fieldName":"END.DATE:4:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."END.DATE:4:1"
                }
 
           ]

@@ -414,95 +414,88 @@
         {
           "propertyId": "SCHEDULE",
           "fields": [
-            {
-              "fieldName": "PROPERTY:1:1",
-              "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:1:1"
-            },
-            {
-              "fieldName": "PERCENTAGE:1:1",
-              "fieldValue": .body.properties[10].SCHEDULE."PERCENTAGE:1:1"
-            },
-            {
-              "fieldName": "START.DATE:1:1",
-              "fieldValue": .body.properties[10].SCHEDULE."START.DATE:1:1"
-            },
-            {
-              "fieldName": "BILL.TYPE:1",
-              "fieldValue": .body.properties[10].SCHEDULE."BILL.TYPE:1"
-            },
 
-            {
-              "fieldName": "PAYMENT.TYPE:2",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.TYPE:2"
-            },
-            {
-              "fieldName": "PAYMENT.METHOD:2",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.METHOD:2"
-            },
-            {
-              "fieldName": "PAYMENT.FREQ:2",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.FREQ:2"
-            },
-            {
-              "fieldName": "PROPERTY:2:2",
-              "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:2:2"
-            }, {
-              "fieldName": "START.DATE:2:1",
-              "fieldValue": .body.properties[10].SCHEDULE."START.DATE:2:1"
-            }, {
-              "fieldName": "END.DATE:2:1",
-              "fieldValue": .body.properties[10].SCHEDULE."END.DATE:2:1"
-            },{
-              "fieldName": "ISSUE.BILL:2",
-              "fieldValue": .body.properties[10].SCHEDULE."ISSUE.BILL:2"
-            },
 
-            {
-              "fieldName": "PAYMENT.TYPE:3",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.TYPE:3"
-            },
-            {
-              "fieldName": "PAYMENT.METHOD:3",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.METHOD:3"
-            },
-            {
-              "fieldName": "PAYMENT.FREQ:3",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.FREQ:3"
-            },
-            {
-              "fieldName": "PROPERTY:3:1",
-              "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:3:1"
-            },
-            {
-              "fieldName": "PROPERTY:3:2",
-              "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:3:2"
-            }, {
-              "fieldName": "START.DATE:3:1",
-              "fieldValue": .body.properties[10].SCHEDULE."START.DATE:3:1"
-            }, {
-              "fieldName": "ISSUE.BILL:3",
-              "fieldValue": .body.properties[10].SCHEDULE."ISSUE.BILL:3"
-            },
-            {
-              "fieldName": "PAYMENT.TYPE:4",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.TYPE:4"
-            },
-            {
-              "fieldName": "PAYMENT.METHOD:4",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.METHOD:4"
-            },
-            {
-              "fieldName": "PAYMENT.FREQ:4",
-              "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.FREQ:4"
-            },
-            {
-              "fieldName": "PROPERTY:4:1",
-              "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:4:1"
-            },
-             {
-              "fieldName": "START.DATE:4:1",
-              "fieldValue": .body.properties[10].SCHEDULE."START.DATE:4:1"
-            }
+              {
+                  "fieldName":"PROPERTY:1:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:1:1"
+               },
+               {
+                  "fieldName":"PERCENTAGE:1:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."PERCENTAGE:1:1"
+               },
+               {
+                  "fieldName":"START.DATE:1:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."START.DATE:1:1"
+               },
+               {
+                  "fieldName":"BILL.TYPE:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."BILL.TYPE:1"
+               },
+               
+               
+                {
+                  "fieldName":"PAYMENT.TYPE:2",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.TYPE:2"
+               },{
+                  "fieldName":"PAYMENT.METHOD:2",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.METHOD:2"
+               },{
+                  "fieldName":"PAYMENT.FREQ:2",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.FREQ:2"
+               },{
+                  "fieldName":"PROPERTY:2:2",
+                  "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:2:2"
+               },{
+                  "fieldName":"START.DATE:2:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."START.DATE:2:1"
+               },{
+                  "fieldName":"END.DATE:2:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."END.DATE:2:1"
+               },{
+                  "fieldName":"ISSUE.BILL:2",
+                  "fieldValue": .body.properties[10].SCHEDULE."ISSUE.BILL:2"
+               },
+               
+                {
+                  "fieldName":"PAYMENT.TYPE:3",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.TYPE:3"
+               },{
+                  "fieldName":"PAYMENT.METHOD:3",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.METHOD:3"
+               },{
+                  "fieldName":"PAYMENT.FREQ:3",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.FREQ:3"
+               },{
+                  "fieldName":"PROPERTY:3:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:3:1"
+               }, {
+                  "fieldName":"PROPERTY:3:2",
+                  "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:3:2"
+               },{
+                  "fieldName":"START.DATE:3:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."START.DATE:3:1"
+               },{
+                  "fieldName":"ISSUE.BILL:3",
+                  "fieldValue": .body.properties[10].SCHEDULE."ISSUE.BILL:3"
+               },
+
+               {
+                  "fieldName":"PAYMENT.TYPE:4",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.TYPE:4"
+               },{
+                  "fieldName":"PAYMENT.METHOD:4",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.METHOD:4"
+               },{
+                  "fieldName":"PAYMENT.FREQ:4",
+                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.FREQ:4"
+               },{
+                  "fieldName":"PROPERTY:4:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:4:1"
+               }, {
+                  "fieldName":"START.DATE:4:1",
+                  "fieldValue": .body.properties[10].SCHEDULE."START.DATE:4:1"
+               }
 
           ]
         }

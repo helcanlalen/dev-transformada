@@ -371,8 +371,8 @@
               "fieldValue": .body.properties[5].SETTLEMENT."TIPO.CTA.CREDIT"
             },
              {
-              "fieldName": "CTA.CREDITO",
-              "fieldValue": .body.properties[5].SETTLEMENT."CTA.CREDITO"
+              "fieldName": "L.CTA.CREDITO",
+              "fieldValue": .body.properties[5].SETTLEMENT."L.CTA.CREDITO"
             }
           ]
         },        {

@@ -247,8 +247,8 @@
               "fieldValue": .body.properties[0].ACCOUNT."L.INVERSION"
             },
             {
-              "fieldName": "L.PAIS.AP.FONDOS",
-              "fieldValue": .body.properties[0].ACCOUNT."L.PAIS.AP.FONDOS"
+              "fieldName": "L.PAIS.AP.FONDO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.PAIS.AP.FONDO"
             },
             {
               "fieldName": "L.ORIG.CED.HIPO",

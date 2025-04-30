@@ -223,8 +223,8 @@
               "fieldValue": .body.properties[0].ACCOUNT."L.TIPO.CEDULA"
             },
             {
-              "fieldName": "SIT.ACT.CREDIT",
-              "fieldValue": .body.properties[0].ACCOUNT."SIT.ACT.CREDIT"
+              "fieldName": "L.SIT.ACTIV.CRE",
+              "fieldValue": .body.properties[0].ACCOUNT."L.SIT.ACTIV.CRE"
             },
             {
               "fieldName": "L.CONSTRUCTOR",

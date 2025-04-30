@@ -27,12 +27,12 @@
               "fieldValue": .body.properties[0].ACCOUNT."L.DET.GARANTIA"
             },
             {
-              "fieldName": "CASO.CREATIO",
-              "fieldValue": .body.properties[0].ACCOUNT."CASO.CREATIO"
+              "fieldName": "L.CASO.CREATIO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.CASO.CREATIO"
             },
             {
-              "fieldName": "N.RESOLUCION",
-              "fieldValue": .body.properties[0].ACCOUNT."N.RESOLUCION"
+              "fieldName": "L.N.RESOLUCION",
+              "fieldValue": .body.properties[0].ACCOUNT."L.N.RESOLUCION"
             },
             {
               "fieldName": "Fecha.Form",
@@ -47,8 +47,8 @@
               "fieldValue": .body.properties[0].ACCOUNT."No.Escritura"
             },
             {
-              "fieldName": "NOTARIO",
-              "fieldValue": .body.properties[0].ACCOUNT."NOTARIO"
+              "fieldName": "L.NOTARIO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.NOTARIO"
             },
             {
               "fieldName": "Cupo.Inter",
@@ -79,8 +79,8 @@
               "fieldValue": .body.properties[0].ACCOUNT."Fech.Acta.Aprob"
             },
             {
-              "fieldName": "EJE.APROBO",
-              "fieldValue": .body.properties[0].ACCOUNT."EJE.APROBO"
+              "fieldName": "L.EJE.APROBO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.EJE.APROBO"
             },
             {
               "fieldName": "Codigo.de.Banca",
@@ -91,8 +91,8 @@
               "fieldValue": .body.properties[0].ACCOUNT."L.SEGMENTO"
             },
             {
-              "fieldName": "SUBSEGMENTO",
-              "fieldValue": .body.properties[0].ACCOUNT."SUBSEGMENTO"
+              "fieldName": "L.SUBSEGMENTO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.SUBSEGMENTO"
             },
             {
               "fieldName": "Crit.Valuacion",
@@ -111,40 +111,40 @@
               "fieldValue": .body.properties[0].ACCOUNT."Func.Sindicados"
             },
             {
-              "fieldName": "MEDIO.AMORT",
-              "fieldValue": .body.properties[0].ACCOUNT."MEDIO.AMORT"
+              "fieldName": "L.MEDIO.AMORT",
+              "fieldValue": .body.properties[0].ACCOUNT."L.MEDIO.AMORT"
             },
             {
-              "fieldName": "ORIGEN",
-              "fieldValue": .body.properties[0].ACCOUNT."ORIGEN"
+              "fieldName": "L.ORIGEN",
+              "fieldValue": .body.properties[0].ACCOUNT."L.ORIGEN"
             },
             {
-              "fieldName": "COMPLEMENTO",
-              "fieldValue": .body.properties[0].ACCOUNT."COMPLEMENTO"
+              "fieldName": "L.COMPLEMENTO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.COMPLEMENTO"
             },
             {
-              "fieldName": "CARAC.REESTRUC",
-              "fieldValue": .body.properties[0].ACCOUNT."CARAC.REESTRUC"
+              "fieldName": "L.CARAC.REESTRU",
+              "fieldValue": .body.properties[0].ACCOUNT."L.CARAC.REESTRUC"
             },
             {
-              "fieldName": "COD.PAG.DEUDA",
-              "fieldValue": .body.properties[0].ACCOUNT."COD.PAG.DEUDA"
+              "fieldName": "L.COD.PAG.DEUDA",
+              "fieldValue": .body.properties[0].ACCOUNT."L.COD.PAG.DEUDA"
             },
             {
-              "fieldName": "TIPO.PRESTAMO",
-              "fieldValue": .body.properties[0].ACCOUNT."TIPO.PRESTAMO"
+              "fieldName": "L.TIPO.PRESTAMO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.TIPO.PRESTAMO"
             },
             {
-              "fieldName": "Consumo.Viviend",
-              "fieldValue": .body.properties[0].ACCOUNT."Consumo.Viviend"
+              "fieldName": "L.COD.CONS.VIVI",
+              "fieldValue": .body.properties[0].ACCOUNT."L.COD.CONS.VIVI"
             },
             {
               "fieldName": "Act.Economica",
               "fieldValue": .body.properties[0].ACCOUNT."Act.Economica"
             },
             {
-              "fieldName": "COD.DESTINO",
-              "fieldValue": .body.properties[0].ACCOUNT."COD.DESTINO"
+              "fieldName": "L.COD.DESTINO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.COD.DESTINO"
             },
             {
               "fieldName": "Tipo.de.Gasto",
@@ -159,20 +159,20 @@
               "fieldValue": .body.properties[0].ACCOUNT."Tamano.Empresa"
             },
             {
-              "fieldName": "DEU.MAYORES",
-              "fieldValue": .body.properties[0].ACCOUNT."DEU.MAYORES"
+              "fieldName": "L.DEU.MAYORES",
+              "fieldValue": .body.properties[0].ACCOUNT."L.DEU.MAYORES"
             },
             {
-              "fieldName": "SECTORIZACION",
-              "fieldValue": .body.properties[0].ACCOUNT."SECTORIZACION"
+              "fieldName": "L.SECTORIZACION",
+              "fieldValue": .body.properties[0].ACCOUNT."L.SECTORIZACION"
             },
             {
-              "fieldName": "SOLICIT.ACTIVO",
-              "fieldValue": .body.properties[0].ACCOUNT."SOLICIT.ACTIVO"
+              "fieldName": "L.SOLICITUD.ACT",
+              "fieldValue": .body.properties[0].ACCOUNT."L.SOLICITUD.ACT"
             },
             {
-              "fieldName": "COD.ASEGURADORA",
-              "fieldValue": .body.properties[0].ACCOUNT."COD.ASEGURADORA"
+              "fieldName": "L.COD.ASEGURADO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.COD.ASEGURADO"
             },
             {
               "fieldName": "No.Poliza",
@@ -219,92 +219,92 @@
               "fieldValue": .body.properties[0].ACCOUNT."L.ESTADOS"
             },
             {
-              "fieldName": "TIPO.CEDULA",
-              "fieldValue": .body.properties[0].ACCOUNT."TIPO.CEDULA"
+              "fieldName": "L.TIPO.CEDULA",
+              "fieldValue": .body.properties[0].ACCOUNT."L.TIPO.CEDULA"
             },
             {
               "fieldName": "SIT.ACT.CREDIT",
               "fieldValue": .body.properties[0].ACCOUNT."SIT.ACT.CREDIT"
             },
             {
-              "fieldName": "CONSTRUCTOR",
-              "fieldValue": .body.properties[0].ACCOUNT."CONSTRUCTOR"
+              "fieldName": "L.CONSTRUCTOR",
+              "fieldValue": .body.properties[0].ACCOUNT."L.CONSTRUCTOR"
             },
             {
-              "fieldName": "PROYECTO",
-              "fieldValue": .body.properties[0].ACCOUNT."PROYECTO"
+              "fieldName": "L.PROYECTO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.PROYECTO"
             },
             {
-              "fieldName": "MATRI.FISCAL",
-              "fieldValue": .body.properties[0].ACCOUNT."MATRI.FISCAL"
+              "fieldName": "L.MATRICULA.FIS",
+              "fieldValue": .body.properties[0].ACCOUNT."L.MATRICULA.FIS"
             },
             {
-              "fieldName": "TIPO.INVERSION",
-              "fieldValue": .body.properties[0].ACCOUNT."TIPO.INVERSION"
+              "fieldName": "L.TIPO.INVERSIO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.TIPO.INVERSIO"
             },
             {
-              "fieldName": "INVERSION",
-              "fieldValue": .body.properties[0].ACCOUNT."INVERSION"
+              "fieldName": "L.INVERSION",
+              "fieldValue": .body.properties[0].ACCOUNT."L.INVERSION"
             },
             {
-              "fieldName": "PAIS.AP.FONDOS",
-              "fieldValue": .body.properties[0].ACCOUNT."PAIS.AP.FONDOS"
+              "fieldName": "L.PAIS.AP.FONDOS",
+              "fieldValue": .body.properties[0].ACCOUNT."L.PAIS.AP.FONDOS"
             },
             {
-              "fieldName": "ORIG.CED.HIPO",
-              "fieldValue": .body.properties[0].ACCOUNT."ORIG.CED.HIPO"
+              "fieldName": "L.ORIG.CED.HIPO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.ORIG.CED.HIPO"
             },
             {
-              "fieldName": "N.INST.REAL.OPE",
-              "fieldValue": .body.properties[0].ACCOUNT."N.INST.REAL.OPE"
+              "fieldName": "L.NOM.INST.REAL",
+              "fieldValue": .body.properties[0].ACCOUNT."L.NOM.INST.REAL"
             },
             {
-              "fieldName": "N.INST.ADQ.CE.H",
-              "fieldValue": .body.properties[0].ACCOUNT."N.INST.ADQ.CE.H"
+              "fieldName": "L.NOM.INST.ADQ",
+              "fieldValue": .body.properties[0].ACCOUNT."L.NOM.INST.ADQ"
             },
             {
               "fieldName": "Fecha.Vencim",
               "fieldValue": .body.properties[0].ACCOUNT."Fecha.Vencim"
             },
             {
-              "fieldName": "FEC.VENC.REPO",
-              "fieldValue": .body.properties[0].ACCOUNT."FEC.VENC.REPO"
+              "fieldName": "L.FEC.VENC.REPO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.FEC.VENC.REPO"
             },
             {
-              "fieldName": "AREA.COBRO",
-              "fieldValue": .body.properties[0].ACCOUNT."AREA.COBRO"
+              "fieldName": "L.AREA.COBRO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.AREA.COBRO"
             },
             {
-              "fieldName": "GEST.COBRO",
-              "fieldValue": .body.properties[0].ACCOUNT."GEST.COBRO"
+              "fieldName": "L.GEST.COBRO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.GEST.COBRO"
             },
             {
-              "fieldName": "NUM.CONT.REPO",
-              "fieldValue": .body.properties[0].ACCOUNT."NUM.CONT.REPO"
+              "fieldName": "L.NUM.CONT.REPO",
+              "fieldValue": .body.properties[0].ACCOUNT."L.NUM.CONT.REPO"
             },
             {
-              "fieldName": "FECHA.VIGENCIA",
-              "fieldValue": .body.properties[0].ACCOUNT."FECHA.VIGENCIA"
+              "fieldName": "L.FECHA.VIGENCI",
+              "fieldValue": .body.properties[0].ACCOUNT."L.FECHA.VIGENCI"
             },
             {
-              "fieldName": "TIPO.CANAL",
-              "fieldValue": .body.properties[0].ACCOUNT."TIPO.CANAL"
+              "fieldName": "L.TIPO.CANAL",
+              "fieldValue": .body.properties[0].ACCOUNT."L.TIPO.CANAL"
             },
             {
-              "fieldName": "FEC.EMI.CONT",
-              "fieldValue": .body.properties[0].ACCOUNT."FEC.EMI.CONT"
+              "fieldName": "L.FEC.EMI.CONT",
+              "fieldValue": .body.properties[0].ACCOUNT."L.FEC.EMI.CONT"
             },
             {
-              "fieldName": "AGRUPACION",
-              "fieldValue": .body.properties[0].ACCOUNT."AGRUPACION"
+              "fieldName": "L.AGRUPACION",
+              "fieldValue": .body.properties[0].ACCOUNT."L.AGRUPACION"
             },
             {
               "fieldName": "Reg.Propiedad",
               "fieldValue": .body.properties[0].ACCOUNT."Reg.Propiedad"
             },
             {
-              "fieldName": "NUM.ACTA",
-              "fieldValue": .body.properties[0].ACCOUNT."NUM.ACTA"
+              "fieldName": "L.NUM.ACTA",
+              "fieldValue": .body.properties[0].ACCOUNT."L.NUM.ACTA"
             }
           ]
         },
@@ -359,16 +359,16 @@
               "fieldValue": .body.properties[5].SETTLEMENT."PAYOUT.SETTLEMENT:1"
             },
              {
-              "fieldName": "TIPO.CTA.DEBITO",
-              "fieldValue": .body.properties[5].SETTLEMENT."TIPO.CTA.DEBITO"
+              "fieldName": "L.TIPO.CTA.DEBI",
+              "fieldValue": .body.properties[5].SETTLEMENT."L.TIPO.CTA.DEBI"
             },
              {
-              "fieldName": "CTA.DEBITO",
-              "fieldValue": .body.properties[5].SETTLEMENT."CTA.DEBITO"
+              "fieldName": "L.CTA.DEBITO",
+              "fieldValue": .body.properties[5].SETTLEMENT."L.CTA.DEBITO"
             },
              {
-              "fieldName": "TIPO.CTA.CREDIT",
-              "fieldValue": .body.properties[5].SETTLEMENT."TIPO.CTA.CREDIT"
+              "fieldName": "L.TIPO.CTA.CRED",
+              "fieldValue": .body.properties[5].SETTLEMENT."L.TIPO.CTA.CRED"
             },
              {
               "fieldName": "L.CTA.CREDITO",

@@ -1,19 +1,19 @@
 package org.example.route;
 
-import org.apache.camel.builder.RouteBuilder;
-import jakarta.enterprise.context.ApplicationScoped;
-import org.apache.camel.component.jackson.JacksonDataFormat;
-import org.apache.camel.Exchange;
-import org.apache.camel.LoggingLevel;
-
 import javax.net.ssl.X509TrustManager;
 import java.security.cert.X509Certificate;
 import org.apache.camel.support.jsse.SSLContextParameters;
 import org.apache.camel.support.jsse.TrustManagersParameters;
 
+import org.apache.camel.builder.RouteBuilder;
+import jakarta.enterprise.context.ApplicationScoped;
+import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
 import jakarta.inject.Inject;
+import org.example.config.ConfigurationProvider;
 /**
  * Camel route that processes HTTP requests, forwards them to Kafka, and waits for responses.
  * The route implements a request-reply pattern using correlation IDs.

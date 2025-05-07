@@ -82,7 +82,7 @@ public class KafkaToLogRoute extends RouteBuilder {
             // .setExchangePattern(org.apache.camel.ExchangePattern.InOnly) 
             
             // Send to Kafka topic
-            .to("kafka:my-topic10?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
+            .to("kafka:{{kafka_topic_request}}?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
             .log("✅ Sent to Kafka topic `my-topic10`")
         
             // Wait for response from Kafka via SEDA

@@ -53,6 +53,11 @@ public class KafkaToLogRoute extends RouteBuilder {
         String kafkaTopicRequest = configProvider.getProperty("kafka_topic_request");
         String port = configProvider.getProperty("port");
 
+        if (kafkaTopicRequest == null || kafkaTopicRequest.isEmpty()) {
+            kafkaTopicRequest = "my-topic10"; // Valor por defecto en caso de que falle la carga
+            System.out.println("Topico vacio");
+        }
+
         // Configure JSON data format
         @SuppressWarnings("resource")
         JacksonDataFormat jsonDataFormat = new JacksonDataFormat();

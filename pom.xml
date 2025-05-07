@@ -120,6 +120,17 @@
                     <parameters>true</parameters>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
+                <configuration>
+                    <systemProperties>
+                        <quarkus.config.locations>application.properties</quarkus.config.locations>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            
         </plugins>
     </build>
 

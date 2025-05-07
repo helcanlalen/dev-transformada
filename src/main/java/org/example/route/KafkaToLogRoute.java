@@ -61,7 +61,7 @@ public class KafkaToLogRoute extends RouteBuilder {
         // Configure REST component
         restConfiguration()
             .component("platform-http")
-            .port(port);
+            .port(8080);
     
         // Global exception handler
         onException(Exception.class)
@@ -90,7 +90,7 @@ public class KafkaToLogRoute extends RouteBuilder {
             // .setExchangePattern(org.apache.camel.ExchangePattern.InOnly) 
             
             // Send to Kafka topic
-            .to("kafka: " + kafkaTopicRequest +"?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
+            .to("kafka: " + "my-topic10" +"?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
 
             .log("✅ Sent to Kafka topic `my-topic10`")
         

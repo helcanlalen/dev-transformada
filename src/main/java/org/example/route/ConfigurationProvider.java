@@ -19,6 +19,12 @@ public class ConfigurationProvider {
         properties = new Properties();
         try {
             // Lee el archivo de la raíz del proyecto
+
+            System.out.println("Directorio de trabajo actual: " + System.getProperty("user.dir"));
+            File file = new File("application.properties");
+            System.out.println("¿Existe el archivo en la ruta actual?: " + file.exists());
+            System.out.println("Ruta absoluta del archivo buscado: " + file.getAbsolutePath());
+
             properties.load(new FileInputStream("application.properties"));
         } catch (IOException e) {
             System.err.println("No se pudo cargar application.properties: " + e.getMessage());

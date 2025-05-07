@@ -13,7 +13,7 @@ import org.apache.camel.support.jsse.TrustManagersParameters;
 
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
-
+import jakarta.inject.Inject;
 /**
  * Camel route that processes HTTP requests, forwards them to Kafka, and waits for responses.
  * The route implements a request-reply pattern using correlation IDs.
@@ -86,7 +86,7 @@ public class KafkaToLogRoute extends RouteBuilder {
             // .setExchangePattern(org.apache.camel.ExchangePattern.InOnly) 
             
             // Send to Kafka topic
-            .to("kafka: " + kafka_topic_request+"?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
+            .to("kafka: " + kafka_topic_request +"?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
 
             .log("✅ Sent to Kafka topic `my-topic10`")
         

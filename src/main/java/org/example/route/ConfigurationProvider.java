@@ -26,30 +26,16 @@ public class ConfigurationProvider {
             System.out.println("¿Existe el archivo en la ruta actual?: " + file.exists());
             System.out.println("Ruta absoluta del archivo buscado: " + file.getAbsolutePath());
 
+            String kafkaTopicRequest = System.getenv("KAFKA_TOPIC_REQUEST");
+            String kafkaTopicRequestPlanilla = System.getenv("KAFKA_TOPIC_REQUEST_PLANILLA");
+            String port = System.getenv("PORT");
 
-            // Intenta cargar desde la ubicación específica
-            File deploymentFile = new File("/deployments/application.properties");
-            if (deploymentFile.exists()) {
-                System.out.println("✅ El archivo existe en /deployments/application.properties");
-                FileInputStream fis = new FileInputStream(deploymentFile);
-                properties.load(fis);
-                
-                // Mostrar todo el contenido del archivo
-                System.out.println("📄 Contenido del archivo application.properties:");
-                for (String key : properties.stringPropertyNames()) {
-                    System.out.println("   🔑 " + key + " = " + properties.getProperty(key));
-                }
-                fis.close();
-            } else {
-                System.out.println("❌ El archivo NO existe en /deployments/application.properties");
-                // Intenta cargar desde la ubicación actual
-                if (file.exists()) {
-                    properties.load(new FileInputStream(file));
-                } else {
-                    System.out.println("❌ El archivo NO existe en ninguna ubicación conocida");
-                }
-            }
-
+            // Mostrar los valores para depuración
+            System.out.println("📋 Configuración cargada desde variables de entorno:");
+            System.out.println("   🔹 kafka_topic_request = " + kafkaTopicRequest);
+            System.out.println("   🔹 kafka_topic_request_planilla = " + kafkaTopicRequestPlanilla);
+            System.out.println("   🔹 port = " + port);
+            
             properties.load(new FileInputStream("application.properties"));
         } catch (IOException e) {
             System.err.println("No se pudo cargar application.properties: " + e.getMessage());

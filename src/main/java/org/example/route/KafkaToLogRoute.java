@@ -21,6 +21,10 @@ import jakarta.inject.Named;
 @ApplicationScoped
 public class KafkaToLogRoute extends RouteBuilder {
 
+    @Inject
+    @Named("kafkaTopicRequest")
+    String kafkaTopicRequest;
+
     /**
      * Creates an SSL context that trusts all certificates without verification.
      * SECURITY WARNING: This should only be used in development/testing environments.
@@ -82,7 +86,7 @@ public class KafkaToLogRoute extends RouteBuilder {
             // .setExchangePattern(org.apache.camel.ExchangePattern.InOnly) 
             
             // Send to Kafka topic
-            .to("kafka:{{kafka_topic_request}}?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
+            .to("kafka: " + kafka_topic_request+"?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
 
             .log("✅ Sent to Kafka topic `my-topic10`")
         

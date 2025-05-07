@@ -22,7 +22,7 @@ import jakarta.inject.Inject;
 public class KafkaToLogRoute extends RouteBuilder {
 
     @Inject
-    CustomConfigProvider configProvider;
+    ConfigurationProvider configProvider;
 
     /**
      * Creates an SSL context that trusts all certificates without verification.

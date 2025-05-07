@@ -3,6 +3,8 @@ package org.example.config;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
+import jakarta.inject.Singleton;
+import org.eclipse.microprofile.config.ConfigProvider;
 
 import java.io.FileInputStream;
 import java.io.IOException;

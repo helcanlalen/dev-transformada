@@ -22,8 +22,7 @@ import jakarta.inject.Inject;
 public class KafkaToLogRoute extends RouteBuilder {
 
     @Inject
-    @Named("kafkaTopicRequest")
-    String kafkaTopicRequest;
+    CustomConfigProvider configProvider;
 
     /**
      * Creates an SSL context that trusts all certificates without verification.
@@ -49,6 +48,11 @@ public class KafkaToLogRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
+
+        // Obtén cualquier propiedad dinámicamente por su nombre
+        String kafkaTopicRequest = configProvider.getProperty("kafka_topic_request");
+        String port = configProvider.getProperty("port");
+
         // Configure JSON data format
         @SuppressWarnings("resource")
         JacksonDataFormat jsonDataFormat = new JacksonDataFormat();
@@ -57,7 +61,7 @@ public class KafkaToLogRoute extends RouteBuilder {
         // Configure REST component
         restConfiguration()
             .component("platform-http")
-            .port(8080);
+            .port(port);
     
         // Global exception handler
         onException(Exception.class)

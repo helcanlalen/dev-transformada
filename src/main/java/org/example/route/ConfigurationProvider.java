@@ -13,7 +13,7 @@ public class ConfigurationProvider {
     
     private final Properties properties;
     
-    public ConfigurationProvider() {
+    public CustomConfigProvider() {
         properties = new Properties();
         try {
             // Lee el archivo de la raíz del proyecto
@@ -24,9 +24,15 @@ public class ConfigurationProvider {
     }
     
     @Produces
-    @Named("kafkaTopicRequest")
-    public String getKafkaTopicRequest() {
-        // Lee el valor dinámicamente del archivo de propiedades
-        return properties.getProperty("kafka_topic_request");
+    @Singleton
+    @Named("customProperties")
+    public Properties getProperties() {
+        return properties;
     }
+    
+    //Obtener cualquier propiedad por su nombre
+    public String getProperty(String propertyName) {
+        return properties.getProperty(propertyName);
+    }
+
 }

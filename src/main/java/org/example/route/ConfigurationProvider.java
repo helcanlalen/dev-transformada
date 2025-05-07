@@ -13,7 +13,7 @@ public class ConfigurationProvider {
     
     private final Properties properties;
     
-    public CustomConfigProvider() {
+    public ConfigurationProvider() {
         properties = new Properties();
         try {
             // Lee el archivo de la raíz del proyecto

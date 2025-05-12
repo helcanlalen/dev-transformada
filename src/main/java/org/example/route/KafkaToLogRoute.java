@@ -77,7 +77,7 @@ public class KafkaToLogRoute extends RouteBuilder {
             .setBody(simple("{\"error\": \"${exception.message}\"}"));
             
         // HTTP endpoint that processes requests and sends them to Kafka
-        from("platform-http:/planilla")
+        from("platform-http:test")
             .routeId("http-to-kafka")
             // Generate correlation ID for request tracking
             .process(exchange -> {

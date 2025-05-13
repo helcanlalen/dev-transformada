@@ -10,7 +10,7 @@ import org.example.config.ConfigurationProvider;
  * Handles the specific /nomina endpoint and its processing logic.
  */
 @ApplicationScoped
-public class NominaRouteBuilder extends BaseRouteBuilder {
+public class NominaRouteBuilder extends KafkaToLogRoute {
     
     @Override
     protected void configureRoutes() {
@@ -24,7 +24,7 @@ public class NominaRouteBuilder extends BaseRouteBuilder {
         
         // HTTP endpoint that processes nomina requests and sends them to Kafka
         from("platform-http:/nomina")
-            .routeId("nomina-http-to-kafka")
+            .routeId("http-to-kafka")
             // Generate correlation ID for request tracking
             .process(this::addCorrelationId)
             // Transform the input using JSLT

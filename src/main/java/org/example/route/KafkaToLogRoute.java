@@ -142,4 +142,55 @@ public class KafkaToLogRoute extends RouteBuilder {
                 }
             });
     }
+
+       
+    /**
+     * Inicializacion cluster
+     */
+    protected void initCommonConfig() {
+        // Initialize JSON data format
+        jsonDataFormat = new JacksonDataFormat();
+        jsonDataFormat.setPrettyPrint(false);
+        
+        kafkaBrokers = "cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092";
+    }
+
+    /**
+     * Configuracion global exception handler
+     */
+    protected void configureExceptionHandling() {
+        onException(Exception.class)
+            .handled(true)
+            .logStackTrace(true)
+            .log(LoggingLevel.ERROR, "Error processing message: ${exception.message}")
+            .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(500))
+            .setBody(simple("{\"error\": \"${exception.message}\"}"));
+    }
+
+    /**
+     * Configuracion rest del componente
+     */
+    protected void configureRestComponent() {
+        String port = configProvider.getProperty("port");
+        
+        restConfiguration()
+            .component("platform-http")
+            .port(port);
+    }
+
+    /**
+     * Creacion del correlativo ID y agregarlo al exchange
+     * @param exchange The exchange to process
+     */
+    protected void addCorrelationId(Exchange exchange) {
+        String correlationId = java.util.UUID.randomUUID().toString();
+        exchange.setProperty("correlationId", correlationId);
+        exchange.getMessage().setHeader("correlationId", correlationId);
+        System.out.println("🔹 HTTP Received. Correlation ID: " + correlationId);
+    }
+
+    /**
+     * Implement this method to define the specific routes for each implementation
+     */
+    protected abstract void configureRoutes();
 }

@@ -66,7 +66,7 @@ public class KafkaToLogRoute extends RouteBuilder {
         // Configure REST component
         restConfiguration()
             .component("platform-http")
-            .port(8080);
+            .port(port);
     
         // Global exception handler
         onException(Exception.class)

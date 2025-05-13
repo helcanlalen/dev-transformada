@@ -19,21 +19,17 @@ public class ConfigurationProvider {
     
     public ConfigurationProvider() {
         properties = new Properties();
-        try {
-            // Lectura variables de enterno
-            String kafkaTopicRequest = System.getenv("KAFKA_TOPIC_REQUEST");
-            String kafkaTopicRequestPlanilla = System.getenv("KAFKA_TOPIC_REQUEST_PLANILLA");
-            String port = System.getenv("PORT");
 
-            // Mostrar los valores para depuración
-            System.out.println("Configuración cargada desde variables de entorno:");
-            System.out.println("kafka_topic_request = " + kafkaTopicRequest);
-            System.out.println("kafka_topic_request_planilla = " + kafkaTopicRequestPlanilla);
-            System.out.println("port = " + port);
-            
-        } catch (IOException e) {
-            System.err.println("No se puden cargar las variables de entorno: " + e.getMessage());
-        }
+        // Lectura variables de enterno
+        String kafkaTopicRequest = System.getenv("KAFKA_TOPIC_REQUEST");
+        String kafkaTopicRequestPlanilla = System.getenv("KAFKA_TOPIC_REQUEST_PLANILLA");
+        String port = System.getenv("PORT");
+
+        // Mostrar los valores para depuración
+        System.out.println("Configuración cargada desde variables de entorno:");
+        System.out.println("kafka_topic_request = " + kafkaTopicRequest);
+        System.out.println("kafka_topic_request_planilla = " + kafkaTopicRequestPlanilla);
+        System.out.println("port = " + port);
     }
     
     @Produces

@@ -23,7 +23,8 @@ public class KafkaToLogRoute extends RouteBuilder {
 
     @Inject
     ConfigurationProvider configProvider;
-
+    protected JacksonDataFormat jsonDataFormat;
+    protected String kafkaBrokers;
     /**
      * Creates an SSL context that trusts all certificates without verification.
      * SECURITY WARNING: This should only be used in development/testing environments.

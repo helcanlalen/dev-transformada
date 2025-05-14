@@ -41,6 +41,17 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 String transformedBody = exchange.getMessage().getBody(String.class);
                 System.out.println("body a obtener productid: " + transformedBody);
 
+                String jsonBody = exchange.getMessage().getBody(String.class);
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode rootNode = mapper.readTree(jsonBody);
+                    
+                // Acceder al nodo body
+                JsonNode bodyNode = rootNode.get("body");
+                    
+                // Extraer valores del body
+                String productId = bodyNode.get("productId").asText();
+                System.out.println("productId: " + productId);
+
             })
             // Transform the input using JSLT
             .to("jslt:classpath:transformationInputNomina.jslt")

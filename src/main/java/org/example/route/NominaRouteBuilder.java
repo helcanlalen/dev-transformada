@@ -52,9 +52,25 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 String productId = bodyNode.get("productId").asText();
                 System.out.println("productId: " + productId);
 
+            // Determinar qué archivo JSLT usar basado en el productId
+            String jsltFile = "transformationInputDefault.jslt"; // valor por defecto
+            
+            if ("NOMINAS.CON.CONVENIO".equals(productId)) {
+                jsltFile = "transformationInputNomina.jslt";
+            } else if ("CREDITO.CONSUMO.LD".equals(productId)) {
+                jsltFile = "transformadaInputLibreDisp.jslt";
+            } 
+            
+            // Guardar el nombre del archivo JSLT a usar
+            exchange.setProperty("jsltFile", jsltFile);
+            
+            System.out.println("ProductId: " + productId + ", Using JSLT file: " + jsltFile);
+
+
             })
             // Transform the input using JSLT
-            .to("jslt:classpath:transformationInputNomina.jslt")
+            //.to("jslt:classpath:transformationInputNomina.jslt")
+            .toD("jslt:classpath:${exchangeProperty.jsltFile}")
             .log("Transformed JSON: ${body}")
             
             // Send to Kafka topic

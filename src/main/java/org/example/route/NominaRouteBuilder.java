@@ -47,7 +47,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 System.out.println("body a obtener productid: " + transformedBody);
 
                 ObjectMapper mapper = new ObjectMapper();
-                    JsonNode rootNode = mapper.readTree(jsonBody);
+                    JsonNode rootNode = mapper.readTree(transformedBody);
                     
                     // Intentamos acceder directamente a productId desde la raíz
                     if (rootNode.has("productId")) {

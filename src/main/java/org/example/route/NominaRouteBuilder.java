@@ -26,8 +26,6 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
         System.out.println("CONSUMER: " + consumer);
 
         final String kafkaTopic = kafkaTopicRequest;
-        String transformedBody = exchange.getMessage().getBody(String.class);
-        System.out.println("body a obtener productid: " + transformedBody);
 
         // HTTP endpoint that processes nomina requests and sends them to Kafka
         from("platform-http:/nomina")
@@ -38,6 +36,10 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 exchange.setProperty("correlationId", correlationId);
                 exchange.getMessage().setHeader("correlationId", correlationId);
                 System.out.println("HTTP Received. Correlation ID: " + correlationId);
+
+                String transformedBody = exchange.getMessage().getBody(String.class);
+                System.out.println("body a obtener productid: " + transformedBody);
+
             })
             // Transform the input using JSLT
             .to("jslt:classpath:transformationInputNomina.jslt")

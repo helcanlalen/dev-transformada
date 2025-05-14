@@ -46,16 +46,27 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 String transformedBody = exchange.getMessage().getBody(String.class);
                 System.out.println("body a obtener productid: " + transformedBody);
 
-                String jsonBody = exchange.getMessage().getBody(String.class);
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode rootNode = mapper.readTree(jsonBody);
+                    JsonNode rootNode = mapper.readTree(jsonBody);
                     
-                // Acceder al nodo body
-                JsonNode bodyNode = rootNode.get("body");
-                    
-                // Extraer valores del body
-                String productId = bodyNode.get("productId").asText();
-                System.out.println("productId: " + productId);
+                    // Intentamos acceder directamente a productId desde la raíz
+                    if (rootNode.has("productId")) {
+                        String productId = rootNode.get("productId").asText();
+                        System.out.println("productId: " + productId);
+                        
+                        // Resto de tu lógica...
+                    } else {
+                        // Si no encuentra productId en la raíz, verifica si existe un campo body
+                        JsonNode bodyNode = rootNode.get("body");
+                        if (bodyNode != null && bodyNode.has("productId")) {
+                            String productId = bodyNode.get("productId").asText();
+                            System.out.println("productId (desde body): " + productId);
+                            
+                            // Resto de tu lógica...
+                        } else {
+                            System.err.println("No se pudo encontrar el campo productId en el JSON");
+                        }
+                    }
 
             // Determinar qué archivo JSLT usar basado en el productId
             String jsltFile = "transformationInputDefault.jslt"; // valor por defecto

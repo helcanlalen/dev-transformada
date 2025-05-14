@@ -59,7 +59,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                         // Si no encuentra productId en la raíz, verifica si existe un campo body
                         JsonNode bodyNode = rootNode.get("body");
                         if (bodyNode != null && bodyNode.has("productId")) {
-                            String productId = bodyNode.get("productId").asText();
+                            productId = bodyNode.get("productId").asText();
                             System.out.println("productId (desde body): " + productId);
                             
                             // Resto de tu lógica...

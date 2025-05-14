@@ -4,8 +4,9 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.apache.camel.Exchange;
 import org.example.config.ConfigurationProvider;
-import com.fasterxml.jackson.databing.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
+import java.io.IOException;
 /**
  * Route builder for processing nomina-related HTTP requests.
  * Handles the specific /nomina endpoint and its processing logic.
@@ -15,6 +16,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
     
     @Override
     protected void configureRoutes() {
+
         String kafkaTopicRequest = configProvider.getProperty("KAFKA_TOPIC_REQUEST");
         String cluster_port = configProvider.getProperty("CLUSTER_PORT");
         String cluster = configProvider.getProperty("CLUSTER");
@@ -33,6 +35,8 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .routeId("http-to-kafka")
             // Generate correlation ID for request tracking
             .process(exchange -> {
+                try{
+
                 String correlationId = java.util.UUID.randomUUID().toString();
                 exchange.setProperty("correlationId", correlationId);
                 exchange.getMessage().setHeader("correlationId", correlationId);
@@ -67,6 +71,13 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             
             System.out.println("ProductId: " + productId + ", Using JSLT file: " + jsltFile);
 
+            } catch (IOException e) {
+                System.err.println("Error al parsear JSON: " + e.getMessage());
+                exchange.setException(e);
+            } catch (Exception e) {
+                System.err.println("Error inesperado: " + e.getMessage());
+                exchange.setException(e);
+            }
 
             })
             // Transform the input using JSLT

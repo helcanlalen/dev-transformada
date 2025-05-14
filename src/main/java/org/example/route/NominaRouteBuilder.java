@@ -76,6 +76,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 exchange.setException(e);
             } catch (Exception e) {
                 System.err.println("Error inesperado: " + e.getMessage());
+                e.printStackTrace();
                 exchange.setException(e);
             }
 

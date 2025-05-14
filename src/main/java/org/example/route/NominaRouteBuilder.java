@@ -36,6 +36,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 exchange.setProperty("correlationId", correlationId);
                 exchange.getMessage().setHeader("correlationId", correlationId);
                 System.out.println("HTTP Received. Correlation ID: " + correlationId);
+                System.out.println("HTTP Receive2. Correlation ID: " + correlationId);
 
                 String transformedBody = exchange.getMessage().getBody(String.class);
                 System.out.println("body a obtener productid: " + transformedBody);

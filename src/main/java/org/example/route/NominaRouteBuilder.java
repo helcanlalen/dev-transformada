@@ -15,8 +15,9 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
     @Override
     protected void configureRoutes() {
         String kafkaTopicRequest = configProvider.getProperty("KAFKA_TOPIC_REQUEST");
-        String cluster_port = configProvider.getProperty("CLUSTER_PORT");
-        String cluster = configProvider.getProperty("CLUSTER");
+        String cluster_port = configProvider.getClusterPort();
+        String cluster = configProvider.getCluster();
+
         String consumer = "kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group";
         
         if (kafkaTopicRequest == null || kafkaTopicRequest.isEmpty()) {
@@ -72,7 +73,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .log("✅ Returning response to HTTP caller: ${body}");
 
         // Kafka consumer that listens for responses and forwards them to the waiting HTTP request
-        from("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092&groupId=camel-group")
+        from(consumer)
             .routeId("kafka-response-consumer")
             .log("📥 Received from my-topic10-response: ${body} with correlationId=${header.correlationId}")
             .process(exchange -> {

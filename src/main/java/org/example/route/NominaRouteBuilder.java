@@ -14,14 +14,14 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
     
     @Override
     protected void configureRoutes() {
-        String kafkaTopicRequest = configProvider.getProperty("kafka_topic_request");
+        String kafkaTopicRequest = configProvider.getProperty("KAFKA_TOPIC_REQUEST");
         String cluster_port = configProvider.getProperty("CLUSTER_PORT");
         String cluster = configProvider.getProperty("CLUSTER");
         String consumer = "kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group";
         
         if (kafkaTopicRequest == null || kafkaTopicRequest.isEmpty()) {
             kafkaTopicRequest = "my-topic10"; 
-            System.out.println("Topic empty, using default: " + kafkaTopicRequest);
+            System.out.println("TopicS empty, using default: " + kafkaTopicRequest);
         }
         
         final String kafkaTopic = kafkaTopicRequest;

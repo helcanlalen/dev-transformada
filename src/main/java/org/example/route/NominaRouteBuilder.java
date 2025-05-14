@@ -48,10 +48,10 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
 
                 ObjectMapper mapper = new ObjectMapper();
                     JsonNode rootNode = mapper.readTree(transformedBody);
-                    
+                    String productId = "";
                     // Intentamos acceder directamente a productId desde la raíz
                     if (rootNode.has("productId")) {
-                        String productId = rootNode.get("productId").asText();
+                        productId = rootNode.get("productId").asText();
                         System.out.println("productId: " + productId);
                         
                         // Resto de tu lógica...

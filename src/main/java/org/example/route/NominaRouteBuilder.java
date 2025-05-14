@@ -21,9 +21,10 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
         
         if (kafkaTopicRequest == null || kafkaTopicRequest.isEmpty()) {
             kafkaTopicRequest = "my-topic10"; 
-            System.out.println("TopicS empty, using default: " + kafkaTopicRequest);
+            System.out.println("Topic144 empty, using default: " + kafkaTopicRequest);
         }
-        
+        System.out.println("CONSUMER: " + consumer);
+
         final String kafkaTopic = kafkaTopicRequest;
         
         // HTTP endpoint that processes nomina requests and sends them to Kafka
@@ -34,7 +35,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 String correlationId = java.util.UUID.randomUUID().toString();
                 exchange.setProperty("correlationId", correlationId);
                 exchange.getMessage().setHeader("correlationId", correlationId);
-                System.out.println("🔹 HTTPK Received. Correlation ID: " + correlationId);
+                System.out.println("HTTP Received. Correlation ID: " + correlationId);
             })
             // Transform the input using JSLT
             .to("jslt:classpath:transformationInputNomina.jslt")
@@ -78,7 +79,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     exchange.getContext().createProducerTemplate()
                         .sendBody("seda:waitForKafkaResponse-" + correlationId, responseBody);
                     
-                    log.info("Forwarded response to SEDA endpoint for correlationId: {}", correlationId);
+                    log.info("Forwarded response to endpoint for correlationId: {}", correlationId);
                 } else {
                     log.warn("Received Kafka message without correlation ID: {}", responseBody);
                 }

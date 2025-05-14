@@ -82,7 +82,7 @@ public abstract class KafkaToLogRoute extends RouteBuilder {
         String correlationId = java.util.UUID.randomUUID().toString();
         exchange.setProperty("correlationId", correlationId);
         exchange.getMessage().setHeader("correlationId", correlationId);
-        System.out.println("🔹 HTTP Received. Correlation ID: " + correlationId);
+        System.out.println("🔹 JEJE HTTP Received. Correlation ID: " + correlationId);
     }
 
     /**

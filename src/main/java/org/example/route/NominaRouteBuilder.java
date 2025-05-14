@@ -65,7 +65,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .log("Returning response to HTTP caller: ${body}");
 
         // Kafka consumer that listens for responses and forwards them to the waiting HTTP request
-        from(consumer)
+        from("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092&groupId=camel-group")
             .routeId("kafka-response-consumer")
             .log("Received from my-topic10-response: ${body} with correlationId=${header.correlationId}")
             .process(exchange -> {

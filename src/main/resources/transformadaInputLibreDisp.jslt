@@ -343,15 +343,6 @@
           ]
         },
         {
-          "propertyId": "GASTFORMALIZA",
-          "fields": [
-            {
-              "fieldName": "FIXED.AMOUNT",
-              "fieldValue": .body.properties[4].GASTFORMALIZA."FIXED.AMOUNT"
-            }
-          ]
-        },
-        {
           "propertyId": "SETTLEMENT",
           "fields": [
             {
@@ -375,23 +366,6 @@
               "fieldValue": .body.properties[5].SETTLEMENT."L.CTA.CREDITO"
             }
           ]
-        },        {
-          "propertyId": "SEGSALINSOLUTOS",
-          "fields": [
-            {
-              "fieldName": "FIXED.AMOUNT",
-              "fieldValue": .body.properties[6].SEGSALINSOLUTOS."FIXED.AMOUNT"
-            }
-          ]
-        },
-        {
-          "propertyId": "SEGDESEMPLEO",
-          "fields": [
-            {
-              "fieldName": "FIXED.AMOUNT",
-              "fieldValue": .body.properties[7].SEGDESEMPLEO."FIXED.AMOUNT"
-            }
-          ]
         },
                 {
           "propertyId": "SEGDESEINI",
@@ -399,15 +373,6 @@
             {
               "fieldName": "FIXED.AMOUNT",
               "fieldValue": .body.properties[8].SEGDESEINI."FIXED.AMOUNT"
-            }
-          ]
-        },
-         {
-          "propertyId": "RETCONSDEU",
-          "fields": [
-            {
-              "fieldName": "FIXED.AMOUNT",
-              "fieldValue": .body.properties[9].RETCONSDEU."FIXED.AMOUNT"
             }
           ]
         },
@@ -478,28 +443,7 @@
                },{
                   "fieldName":"ISSUE.BILL:3",
                   "fieldValue": .body.properties[10].SCHEDULE."ISSUE.BILL:3"
-               },
-
-               {
-                  "fieldName":"PAYMENT.TYPE:4",
-                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.TYPE:4"
-               },{
-                  "fieldName":"PAYMENT.METHOD:4",
-                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.METHOD:4"
-               },{
-                  "fieldName":"PAYMENT.FREQ:4",
-                  "fieldValue": .body.properties[10].SCHEDULE."PAYMENT.FREQ:4"
-               },{
-                  "fieldName":"PROPERTY:4:1",
-                  "fieldValue": .body.properties[10].SCHEDULE."PROPERTY:4:1"
-               }, {
-                  "fieldName":"START.DATE:4:1",
-                  "fieldValue": .body.properties[10].SCHEDULE."START.DATE:4:1"
-               }, {
-                  "fieldName":"END.DATE:4:1",
-                  "fieldValue": .body.properties[10].SCHEDULE."END.DATE:4:1"
                }
-
           ]
         }
       ]

@@ -18,8 +18,8 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
     protected void configureRoutes() {
 
         String kafkaTopicRequest = configProvider.getProperty("KAFKA_TOPIC_REQUEST");
-        String cluster_port = configProvider.getProperty("CLUSTER_PORT");
-        String cluster = configProvider.getProperty("CLUSTER");
+        String cluster_port = configProvider.getClusterPort();
+        String cluster = configProvider.getcluster();
         String consumer = "kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group";
         
         if (kafkaTopicRequest == null || kafkaTopicRequest.isEmpty()) {
@@ -41,11 +41,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 exchange.setProperty("correlationId", correlationId);
                 exchange.getMessage().setHeader("correlationId", correlationId);
                 System.out.println("HTTP Received. Correlation ID: " + correlationId);
-                System.out.println("HTTP Receive2. Correlation ID: " + correlationId);
-
-                String transformedBody = exchange.getMessage().getBody(String.class);
-                System.out.println("body a obtener productid: " + transformedBody);
-
+                
                 ObjectMapper mapper = new ObjectMapper();
                     JsonNode rootNode = mapper.readTree(transformedBody);
                     String productId = "";

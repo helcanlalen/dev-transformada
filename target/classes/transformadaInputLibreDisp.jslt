@@ -367,15 +367,6 @@
             }
           ]
         },
-                {
-          "propertyId": "SEGDESEINI",
-          "fields": [
-            {
-              "fieldName": "FIXED.AMOUNT",
-              "fieldValue": .body.properties[8].SEGDESEINI."FIXED.AMOUNT"
-            }
-          ]
-        },
         {
           "propertyId": "SCHEDULE",
           "fields": [

@@ -34,7 +34,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 String correlationId = java.util.UUID.randomUUID().toString();
                 exchange.setProperty("correlationId", correlationId);
                 exchange.getMessage().setHeader("correlationId", correlationId);
-                System.out.println("🔹 HTTP Received. Correlation ID: " + correlationId);
+                System.out.println("🔹 HTTPK Received. Correlation ID: " + correlationId);
             })
             // Transform the input using JSLT
             .to("jslt:classpath:transformationInputNomina.jslt")

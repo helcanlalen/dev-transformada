@@ -62,7 +62,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     }
                     return newExchange;
                 })
-            .log("✅ Returning response to HTTP caller: ${body}");
+            .log("Returning response to HTTP caller: ${body}");
 
         // Kafka consumer that listens for responses and forwards them to the waiting HTTP request
         from(consumer)

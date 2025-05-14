@@ -4,7 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.apache.camel.Exchange;
 import org.example.config.ConfigurationProvider;
-import con.fasterxml.jackson.databing.ObjectMapper;
+import com.fasterxml.jackson.databing.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 /**
  * Route builder for processing nomina-related HTTP requests.

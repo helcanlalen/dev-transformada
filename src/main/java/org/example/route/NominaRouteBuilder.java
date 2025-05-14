@@ -26,7 +26,9 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
         System.out.println("CONSUMER: " + consumer);
 
         final String kafkaTopic = kafkaTopicRequest;
-        
+        String transformedBody = exchange.getMessage().getBody(String.class);
+        System.out.println("body a obtener productid: " + transformedBody);
+
         // HTTP endpoint that processes nomina requests and sends them to Kafka
         from("platform-http:/nomina")
             .routeId("http-to-kafka")

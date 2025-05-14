@@ -17,7 +17,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
         String kafkaTopicRequest = configProvider.getProperty("kafka_topic_request");
         String cluster_port = configProvider.getProperty("CLUSTER_PORT");
         String cluster = configProvider.getProperty("CLUSTER");
-        String consumer = "kafka:my-topic10-response?brokers=" + cluster ":" + cluster_port +"&groupId=camel-group";
+        String consumer = "kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group";
         
         if (kafkaTopicRequest == null || kafkaTopicRequest.isEmpty()) {
             kafkaTopicRequest = "my-topic10"; 

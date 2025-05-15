@@ -31,7 +31,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
         final String kafkaTopic = kafkaTopicRequest;
 
         // HTTP endpoint that processes nomina requests and sends them to Kafka
-        from("platform-http:/loan -retail")
+        from("platform-http:/Loan-Retail")
             .routeId("http-to-kafka")
             // Generate correlation ID for request tracking
             .process(exchange -> {

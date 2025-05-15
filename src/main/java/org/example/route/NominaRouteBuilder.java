@@ -51,23 +51,18 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     if (rootNode.has("productId")) {
                         productId = rootNode.get("productId").asText();
                         System.out.println("productId: " + productId);
-                        
-                        // Resto de tu lógica...
-                    } else {
+                   } else {
                         // Si no encuentra productId en la raíz, verifica si existe un campo body
                         JsonNode bodyNode = rootNode.get("body");
                         if (bodyNode != null && bodyNode.has("productId")) {
                             productId = bodyNode.get("productId").asText();
                             System.out.println("productId (desde body): " + productId);
-                            
-                            // Resto de tu lógica...
                         } else {
                             System.err.println("No se pudo encontrar el campo productId en el JSON");
                         }
                     }
 
-            // Determinar qué archivo JSLT usar basado en el productId
-            String jsltFile = "transformationInputDefault.jslt"; // valor por defecto
+            String jsltFile = ""; // valor por defecto
             
             if ("NOMINAS.CON.CONVENIO".equals(productId)) {
                 jsltFile = "transformationInputNomina.jslt";

@@ -18,13 +18,13 @@ public class ConfigurationProvider {
     public ConfigurationProvider() {
         
         //Variables de entorno
-        kafkaTopicRequest = System.getenv("KAFKA_TOPIC_REQUEST");
-        kafkaTopicRequestNomina = System.getenv("KAFKA_TOPIC_REQUEST_RETAIL");
-        port = System.getenv("PORT");
-        cluster = System.getenv("CLUSTER");
-        cluster_port = System.getenv("CLUSTER_PORT");
-        productIdNomina = System.getenv("ID_PROD_NOMINA");
-        productIdLibreDisp = System.getenv("ID_PROD_LIB_DISP");
+        this.kafkaTopicRequest = System.getenv("KAFKA_TOPIC_REQUEST");
+        this.kafkaTopicRequestNomina = System.getenv("KAFKA_TOPIC_REQUEST_RETAIL");
+        this.port = System.getenv("PORT");
+        this.cluster = System.getenv("CLUSTER");
+        this.cluster_port = System.getenv("CLUSTER_PORT");
+        this.productIdNomina = System.getenv("ID_PROD_NOMINA");
+        this.productIdLibreDisp = System.getenv("ID_PROD_LIB_DISP");
 
         System.out.println("Configuracion cargada desde variables de entorno:");
         System.out.println("kafka_topic_request = " + kafkaTopicRequest);
@@ -36,11 +36,6 @@ public class ConfigurationProvider {
         System.out.println("Product ID libre disponibilidad= " + productIdLibreDisp);
     }
     
-    //Obtener cualquier propiedad por su nombre
-    public String getProperty(String propertyName) {
-        return properties.getProperty(propertyName);
-    }
-
     public String getTopicRequestNomina(){
         return this.kafkaTopicRequestNomina;
     }

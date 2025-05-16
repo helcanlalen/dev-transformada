@@ -38,15 +38,15 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     String jsltFile = ""; 
                     String correlationId = java.util.UUID.randomUUID().toString();
                     ObjectMapper mapper = new ObjectMapper();
+                    
                     JsonNode rootNode = mapper.readTree(transformedBody);
+                    String transformedBody = exchange.getMessage().getBody(String.class);
                     String productId = "";
                     
                     exchange.setProperty("correlationId", correlationId);
                     exchange.getMessage().setHeader("correlationId", correlationId);
                     System.out.println("HTTP Received, correlation ID: " + correlationId);
-    
-                    String transformedBody = exchange.getMessage().getBody(String.class);
-                    
+                        
                     // Bussqueda productId en Json
                     JsonNode bodyNode = rootNode.get("body");
                     if (bodyNode != null && bodyNode.has("productId")) {

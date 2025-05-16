@@ -17,7 +17,7 @@ public class ConfigurationProvider {
     
     private final Properties properties;
     String kafkaTopicRequest;
-    String kafkaTopicRequestPlanilla;
+    String kafkaTopicRequestNomina;
     String port; 
     String cluster;
     String cluster_port;
@@ -27,14 +27,14 @@ public class ConfigurationProvider {
 
         // Lectura variables de enterno
         kafkaTopicRequest = System.getenv("KAFKA_TOPIC_REQUEST");
-        kafkaTopicRequestPlanilla = System.getenv("KAFKA_TOPIC_REQUEST_PLANILLA");
+        kafkaTopicRequestNomina = System.getenv("KAFKA_TOPIC_REQUEST_PLANILLA");
         port = System.getenv("PORT");
         cluster = System.getenv("CLUSTER");
         cluster_port = System.getenv("CLUSTER_PORT");
         // Mostrar los valores para depuración
         System.out.println("Configuración cargada desde variables de entorno:");
         System.out.println("kafka_topic_request = " + kafkaTopicRequest);
-        System.out.println("kafka_topic_request_planilla = " + kafkaTopicRequestPlanilla);
+        System.out.println("kafka_topic_request_Nomina = " + kafkaTopicRequestNomina);
         System.out.println("port = " + port);
         System.out.println("cluster = " + cluster);        
         System.out.println("cluster_port = " + cluster_port);
@@ -50,6 +50,10 @@ public class ConfigurationProvider {
     //Obtener cualquier propiedad por su nombre
     public String getProperty(String propertyName) {
         return properties.getProperty(propertyName);
+    }
+
+    public String getTopicRequestNomina(){
+        return this.kafkaTopicRequestNomina
     }
     
     public String getCluster() {

@@ -20,6 +20,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
         String kafkaTopicRequest = configProvider.getTopicRequestNomina();
         String cluster_port = configProvider.getClusterPort();
         String cluster = configProvider.getCluster();
+        
         String consumer = "kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group";
         
         if (kafkaTopicRequest == null || kafkaTopicRequest.isEmpty()) {
@@ -58,9 +59,9 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                         System.out.println("No se pudo encontrar el productId en el JSON");
                     }
                         
-                    if ("NOMINAS.CON.CONVENIO".equals(productId)) {
+                    if (configProvider.getProductIdNomina().equals(productId)) {
                         jsltFile = "transformationInputNomina.jslt";
-                    } else if ("CREDITO.CONSUMO.LD".equals(productId)) {
+                    } else if (configProvider.getproductIdLibreDisp().equals(productId)) {
                         jsltFile = "transformadaInputLibreDisp.jslt";
                     } 
                     

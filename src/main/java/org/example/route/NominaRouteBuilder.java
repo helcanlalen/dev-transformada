@@ -18,7 +18,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
     protected void configureRoutes() {
 
         String kafkaTopicRequest = configProvider.getTopicRequestNomina();
-        String cluster_port = configProvider.getCluster();
+        String cluster_port = configProvider.getClusterPort();
         String cluster = configProvider.getCluster();
         String consumer = "kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group";
         
@@ -87,7 +87,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .log("Transformed JSON: ${body}")
             
             // Send to Kafka topic
-            .to("kafka:" + kafkaTopicRequest +"?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
+            .to("kafka:" + kafkaTopicRequest +"?brokers=" + cluster + ":" + cluster_port)
 
             .log("Sent to Kafka topic `my-topic10`")
         

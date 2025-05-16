@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 /**
  * Route builder for processing nomina-related HTTP requests.
- * Handles the specific /nomina endpoint and its processing logic.
+ * Handles the specific /Loan-Retail (Nomina/planilla/libre disponiblidad).
  */
 @ApplicationScoped
 public class NominaRouteBuilder extends KafkaToLogRoute {
@@ -17,7 +17,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
     @Override
     protected void configureRoutes() {
 
-        String kafkaTopicRequest = configProvider.getProperty("KAFKA_TOPIC_REQUEST");
+        String kafkaTopicRequest = configProvider.getTopicRequestNomina();
         String cluster_port = configProvider.getCluster();
         String cluster = configProvider.getCluster();
         String consumer = "kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group";
@@ -40,7 +40,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     String correlationId = java.util.UUID.randomUUID().toString();
                     exchange.setProperty("correlationId", correlationId);
                     exchange.getMessage().setHeader("correlationId", correlationId);
-                    System.out.println("HTTP Received. Correlation ID: " + correlationId);
+                    System.out.println("HTTP Received, correlation ID: " + correlationId);
     
                     String transformedBody = exchange.getMessage().getBody(String.class);
     
@@ -62,34 +62,32 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                         }
                     }
 
-            String jsltFile = ""; 
-            
-            if ("NOMINAS.CON.CONVENIO".equals(productId)) {
-                jsltFile = "transformationInputNomina.jslt";
-            } else if ("CREDITO.CONSUMO.LD".equals(productId)) {
-                jsltFile = "transformadaInputLibreDisp.jslt";
-            } 
-            
-            exchange.setProperty("jsltFile", jsltFile);
-            System.out.println("ProductId: " + productId + ", Using JSLT file: " + jsltFile);
-
-            } catch (IOException e) {
-                System.err.println("Error al parsear JSON: " + e.getMessage());
-                exchange.setException(e);
-            } catch (Exception e) {
-                System.err.println("Error inesperado: " + e.getMessage());
-                e.printStackTrace();
-                exchange.setException(e);
-            }
+                String jsltFile = ""; 
+                
+                if ("NOMINAS.CON.CONVENIO".equals(productId)) {
+                    jsltFile = "transformationInputNomina.jslt";
+                } else if ("CREDITO.CONSUMO.LD".equals(productId)) {
+                    jsltFile = "transformadaInputLibreDisp.jslt";
+                } 
+                
+                exchange.setProperty("jsltFile", jsltFile);
+                        
+                } catch (IOException e) {
+                    System.err.println("Error al parsear JSON: " + e.getMessage());
+                    exchange.setException(e);
+                } catch (Exception e) {
+                    System.err.println("Error inesperado: " + e.getMessage());
+                    e.printStackTrace();
+                    exchange.setException(e);
+                }
 
             })
-            // Transform the input using JSLT
-            //.to("jslt:classpath:transformationInputNomina.jslt")
+            //.to("jslt:classpath:transformationInputNomina.jslt") utilzar cuando se envie a un jslt en especifico
             .toD("jslt:classpath:${exchangeProperty.jsltFile}")
             .log("Transformed JSON: ${body}")
             
             // Send to Kafka topic
-            .to("kafka:" + kafkaTopicRequest +"?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
+            .to("kafka:" + kafkaTopicRequest +"?brokers=" + cluster + ":" + cluster_port)
 
             .log("Sent to Kafka topic `my-topic10`")
         
@@ -113,7 +111,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .log("Returning response to HTTP caller: ${body}");
 
         // Kafka consumer that listens for responses and forwards them to the waiting HTTP request
-        from("kafka:my-topic10-response?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092&groupId=camel-group")
+        from("kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group")
             .routeId("kafka-response-consumer")
             .log("Received from my-topic10-response: ${body} with correlationId=${header.correlationId}")
             .process(exchange -> {
@@ -122,7 +120,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 String responseBody = exchange.getMessage().getBody(String.class);
                 
                 if (correlationId != null) {
-                    // FIXED: Using correlation ID to send to the specific SEDA endpoint
+                    // FIXED: Using correlation ID to send to the specific endpoint
                     exchange.getContext().createProducerTemplate()
                         .sendBody("seda:waitForKafkaResponse-" + correlationId, responseBody);
                     

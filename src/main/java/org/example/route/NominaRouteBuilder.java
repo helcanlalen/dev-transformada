@@ -37,24 +37,26 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 try{
                     String jsltFile = ""; 
                     String correlationId = java.util.UUID.randomUUID().toString();
-                    ObjectMapper mapper = new ObjectMapper();
+                    //ObjectMapper mapper = new ObjectMapper();
                     
-                    String transformedBody = exchange.getMessage().getBody(String.class);
-                    JsonNode rootNode = mapper.readTree(transformedBody);
-                    JsonNode bodyNode = rootNode.get("body");
-                    String productId = "";
+                    //String transformedBody = exchange.getMessage().getBody(String.class);
+                    //JsonNode rootNode = mapper.readTree(transformedBody);
+                    //JsonNode bodyNode = rootNode.get("body");
+                    //String productId = "";
                     
                     exchange.setProperty("correlationId", correlationId);
                     exchange.getMessage().setHeader("correlationId", correlationId);
                     System.out.println("HTTP Received, correlation ID: " + correlationId);
-                        
+
+                    String productId = getProductId(exchange);
+                    
                     // Bussqueda productId en Json
-                    if (bodyNode != null && bodyNode.has("productId")) {
+                    /*if (bodyNode != null && bodyNode.has("productId")) {
                         productId = bodyNode.get("productId").asText();
                         System.out.println("productId (desde body): " + productId);
                     } else {
                         System.out.println("No se pudo encontrar el productId en el JSON");
-                    }
+                    }*/
                         
                     if (configProvider.getProductIdNomina().equals(productId)) {
                         jsltFile = "transformationInputNomina.jslt";

@@ -27,6 +27,7 @@ public abstract class KafkaToLogRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
+        
         // Initialize common configurations
         initCommonConfig();
         
@@ -47,8 +48,7 @@ public abstract class KafkaToLogRoute extends RouteBuilder {
         // Initialize JSON data format
         jsonDataFormat = new JacksonDataFormat();
         jsonDataFormat.setPrettyPrint(false);
-        
-        kafkaBrokers = "cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092";
+        kafkaBrokers = configProvider.getCluster() + ":" + configProvider.getClusterPort();
     }
 
     /**
@@ -67,11 +67,10 @@ public abstract class KafkaToLogRoute extends RouteBuilder {
      * Configuracion rest del componente
      */
     protected void configureRestComponent() {
-        String port = configProvider.getProperty("port");
-        
+        //8080        
         restConfiguration()
             .component("platform-http")
-            .port(port);
+            .port(8443);
     }
 
     /**

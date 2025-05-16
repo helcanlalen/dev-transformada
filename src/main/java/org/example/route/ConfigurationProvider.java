@@ -27,7 +27,7 @@ public class ConfigurationProvider {
 
         // Lectura variables de enterno
         kafkaTopicRequest = System.getenv("KAFKA_TOPIC_REQUEST");
-        kafkaTopicRequestNomina = System.getenv("KAFKA_TOPIC_REQUEST_PLANILLA");
+        kafkaTopicRequestNomina = System.getenv("KAFKA_TOPIC_REQUEST_RETAIL");
         port = System.getenv("PORT");
         cluster = System.getenv("CLUSTER");
         cluster_port = System.getenv("CLUSTER_PORT");

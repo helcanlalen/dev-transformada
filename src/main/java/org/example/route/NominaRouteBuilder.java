@@ -27,10 +27,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             kafkaTopicRequest = "my-topic10"; 
             System.out.println("Topic144 empty, using default: " + kafkaTopicRequest);
         }
-        System.out.println("CONSUMER: " + consumer);
-
-        final String kafkaTopic = kafkaTopicRequest;
-
+    
         // HTTP endpoint that processes nomina requests and sends them to Kafka
         from("platform-http:/Loan-Retail")
             .routeId("http-to-kafka")

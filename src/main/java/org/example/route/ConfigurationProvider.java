@@ -1,21 +1,12 @@
 package org.example.config;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Produces;
-import jakarta.inject.Named;
-import jakarta.inject.Singleton;
 import org.eclipse.microprofile.config.ConfigProvider;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Properties;
-
-import java.io.File; 
 
 @ApplicationScoped
 public class ConfigurationProvider {
     
-    private final Properties properties;
     String kafkaTopicRequest;
     String kafkaTopicRequestNomina;
     String port; 
@@ -25,8 +16,7 @@ public class ConfigurationProvider {
     String productIdLibreDisp;
     
     public ConfigurationProvider() {
-        properties = new Properties();
-
+        
         //Variables de entorno
         kafkaTopicRequest = System.getenv("KAFKA_TOPIC_REQUEST");
         kafkaTopicRequestNomina = System.getenv("KAFKA_TOPIC_REQUEST_RETAIL");
@@ -44,13 +34,6 @@ public class ConfigurationProvider {
         System.out.println("cluster_port = " + cluster_port);
         System.out.println("Product ID nomina = " + productIdNomina);        
         System.out.println("Product ID libre disponibilidad= " + productIdLibreDisp);
-    }
-    
-    @Produces
-    @Singleton
-    @Named("customProperties")
-    public Properties getProperties() {
-        return properties;
     }
     
     //Obtener cualquier propiedad por su nombre

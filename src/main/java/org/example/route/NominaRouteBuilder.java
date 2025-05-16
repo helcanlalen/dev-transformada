@@ -87,7 +87,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .log("Transformed JSON: ${body}")
             
             // Send to Kafka topic
-            .to("kafka:" + kafkaTopicRequest +"?brokers=" + cluster + ":" + cluster_port)
+            .to("kafka:" + kafkaTopicRequest +"?brokers=cluster-nonprod01-kafka-bootstrap.amq-streams-kafka:9092")
 
             .log("Sent to Kafka topic `my-topic10`")
         

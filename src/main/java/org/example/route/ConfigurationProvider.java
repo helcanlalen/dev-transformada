@@ -53,10 +53,10 @@ public class ConfigurationProvider {
     }
     
     public String getCluster() {
-        return properties.getProperty(this.cluster);
+        return this.cluster;
     }    
     
     public String getClusterPort() {
-        return properties.getProperty(this.cluster_port);
+        return this.cluster_port;
     }
 }

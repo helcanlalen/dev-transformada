@@ -84,6 +84,27 @@ public abstract class KafkaToLogRoute extends RouteBuilder {
         System.out.println("🔹 JEJE HTTP Received. Correlation ID: " + correlationId);
     }
 
+    protected String getProductId(Exchange exchange) throws IOException {
+        String body = exchange.getMessage().getBody(String.class);
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode rootNode = mapper.readTree(body);
+        JsonNode bodyNode = rootNode.get("body");
+        
+        if (bodyNode != null && bodyNode.has("productId")) {
+            String productId = bodyNode.get("productId").asText();
+            System.out.println("productId (desde body): " + productId);
+            return productId;
+        } else {
+            System.out.println("No se pudo encontrar el productId en el JSON");
+            return "";
+        }
+    }
+
+    protected void setupJsltTransformation(Exchange exchange, String productId) {
+        String jsltFile = determineJsltFile(productId);
+        exchange.setProperty("jsltFile", jsltFile);
+    }
+
     /**
      * Implement this method to define the specific routes for each implementation
      */

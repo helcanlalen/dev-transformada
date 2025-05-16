@@ -103,11 +103,6 @@ public abstract class KafkaToLogRoute extends RouteBuilder {
         }
     }
 
-    protected void setupJsltTransformation(Exchange exchange, String productId) {
-        String jsltFile = determineJsltFile(productId);
-        exchange.setProperty("jsltFile", jsltFile);
-    }
-
     /**
      * Implement this method to define the specific routes for each implementation
      */

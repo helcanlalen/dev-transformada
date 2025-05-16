@@ -14,6 +14,9 @@ import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
 import jakarta.inject.Inject;
 import org.example.config.ConfigurationProvider;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
+import java.io.IOException;
 /**
  * Camel route that processes HTTP requests, forwards them to Kafka, and waits for responses.
  * The route implements a request-reply pattern using correlation IDs.

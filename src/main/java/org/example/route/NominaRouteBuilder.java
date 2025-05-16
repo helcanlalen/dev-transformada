@@ -37,41 +37,35 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .process(exchange -> {
                 
                 try{
+                    String jsltFile = ""; 
                     String correlationId = java.util.UUID.randomUUID().toString();
+                    ObjectMapper mapper = new ObjectMapper();
+                    JsonNode rootNode = mapper.readTree(transformedBody);
+                    String productId = "";
+                    
                     exchange.setProperty("correlationId", correlationId);
                     exchange.getMessage().setHeader("correlationId", correlationId);
                     System.out.println("HTTP Received, correlation ID: " + correlationId);
     
                     String transformedBody = exchange.getMessage().getBody(String.class);
-    
-                    ObjectMapper mapper = new ObjectMapper();
-                    JsonNode rootNode = mapper.readTree(transformedBody);
-                    String productId = "";
-                    // Acceder directamente a productId desde la raíz
-                    if (rootNode.has("productId")) {
-                        productId = rootNode.get("productId").asText();
-                        System.out.println("productId: " + productId);
-                   } else {
-                        // Si no encuentra productId en la raíz, verifica si existe un campo body
-                        JsonNode bodyNode = rootNode.get("body");
-                        if (bodyNode != null && bodyNode.has("productId")) {
-                            productId = bodyNode.get("productId").asText();
-                            System.out.println("productId (desde body): " + productId);
-                        } else {
-                            System.err.println("No se pudo encontrar el campo productId en el JSON");
-                        }
+                    
+                    // Bussqueda productId en Json
+                    JsonNode bodyNode = rootNode.get("body");
+                    if (bodyNode != null && bodyNode.has("productId")) {
+                        productId = bodyNode.get("productId").asText();
+                        System.out.println("productId (desde body): " + productId);
+                    } else {
+                        System.out.println("No se pudo encontrar el productId en el JSON");
                     }
-
-                String jsltFile = ""; 
-                
-                if ("NOMINAS.CON.CONVENIO".equals(productId)) {
-                    jsltFile = "transformationInputNomina.jslt";
-                } else if ("CREDITO.CONSUMO.LD".equals(productId)) {
-                    jsltFile = "transformadaInputLibreDisp.jslt";
-                } 
-                
-                exchange.setProperty("jsltFile", jsltFile);
                         
+                    if ("NOMINAS.CON.CONVENIO".equals(productId)) {
+                        jsltFile = "transformationInputNomina.jslt";
+                    } else if ("CREDITO.CONSUMO.LD".equals(productId)) {
+                        jsltFile = "transformadaInputLibreDisp.jslt";
+                    } 
+                    
+                    exchange.setProperty("jsltFile", jsltFile);
+                            
                 } catch (IOException e) {
                     System.err.println("Error al parsear JSON: " + e.getMessage());
                     exchange.setException(e);

@@ -53,7 +53,7 @@ public class ConfigurationProvider {
     }
 
     public String getTopicRequestNomina(){
-        return this.kafkaTopicRequestNomina
+        return this.kafkaTopicRequestNomina;
     }
     
     public String getCluster() {

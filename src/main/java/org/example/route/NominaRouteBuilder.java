@@ -35,19 +35,19 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .routeId("http-to-kafka")
             // Generate correlation ID for request tracking
             .process(exchange -> {
+                
                 try{
-
-                String correlationId = java.util.UUID.randomUUID().toString();
-                exchange.setProperty("correlationId", correlationId);
-                exchange.getMessage().setHeader("correlationId", correlationId);
-                System.out.println("HTTP Received. Correlation ID: " + correlationId);
-
-                String transformedBody = exchange.getMessage().getBody(String.class);
-
-                ObjectMapper mapper = new ObjectMapper();
+                    String correlationId = java.util.UUID.randomUUID().toString();
+                    exchange.setProperty("correlationId", correlationId);
+                    exchange.getMessage().setHeader("correlationId", correlationId);
+                    System.out.println("HTTP Received. Correlation ID: " + correlationId);
+    
+                    String transformedBody = exchange.getMessage().getBody(String.class);
+    
+                    ObjectMapper mapper = new ObjectMapper();
                     JsonNode rootNode = mapper.readTree(transformedBody);
                     String productId = "";
-                    // Intentamos acceder directamente a productId desde la raíz
+                    // Acceder directamente a productId desde la raíz
                     if (rootNode.has("productId")) {
                         productId = rootNode.get("productId").asText();
                         System.out.println("productId: " + productId);
@@ -62,7 +62,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                         }
                     }
 
-            String jsltFile = ""; // valor por defecto
+            String jsltFile = ""; 
             
             if ("NOMINAS.CON.CONVENIO".equals(productId)) {
                 jsltFile = "transformationInputNomina.jslt";
@@ -70,9 +70,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 jsltFile = "transformadaInputLibreDisp.jslt";
             } 
             
-            // Guardar el nombre del archivo JSLT a usar
             exchange.setProperty("jsltFile", jsltFile);
-            
             System.out.println("ProductId: " + productId + ", Using JSLT file: " + jsltFile);
 
             } catch (IOException e) {

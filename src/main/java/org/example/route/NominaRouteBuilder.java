@@ -111,6 +111,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
 
     @Override
     protected void configureRoutes() {
+
         String kafkaTopicRequest = configProvider.getTopicRequestNomina();
         String cluster_port = configProvider.getClusterPort();
         String cluster = configProvider.getCluster();
@@ -127,13 +128,15 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             .routeId("http-to-kafka")
             // Generate correlation ID for request tracking
             .process(exchange -> {
-                try {
+                
+                try{
                     String jsltFile = ""; 
                     String correlationId = java.util.UUID.randomUUID().toString();
                     
                     exchange.setProperty("correlationId", correlationId);
                     exchange.getMessage().setHeader("correlationId", correlationId);
                     System.out.println("HTTP Received, correlation ID: " + correlationId);
+
                     String productId = getProductId(exchange);
                         
                     if (configProvider.getProductIdNomina().equals(productId)) {
@@ -152,7 +155,9 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     e.printStackTrace();
                     exchange.setException(e);
                 }
+
             })
+            
             // Verificar si hay errores de validación antes de continuar
             .choice()
                 .when(exchange -> exchange.getException() != null)
@@ -168,7 +173,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     .toD("jslt:classpath:${exchangeProperty.jsltFile}")
                     .log("Transformed JSON: ${body}")
             .end()
-            
+
             // Verificar si hay errores HTTP de la API
             .choice()
                 .when(exchangeProperty("httpError").isEqualTo(true))
@@ -187,7 +192,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     .to("kafka:" + kafkaTopicRequest +"?brokers=" + cluster + ":" + cluster_port)
                     .log("Sent to Kafka topic `my-topic10`")
             .end()
-        
+
             // FIXED: Using a dynamic SEDA endpoint based on correlation ID
             .process(exchange -> {
                 // Store original exchange in a registry or cache with correlation ID as key
@@ -229,6 +234,7 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             })
             .log("Returning response to HTTP caller: ${body}");
             
+
         // Kafka consumer that listens for responses and forwards them to the waiting HTTP request
         from("kafka:my-topic10-response?brokers=" + cluster + ":" + cluster_port +"&groupId=camel-group")
             .routeId("kafka-response-consumer")
@@ -267,9 +273,9 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                     log.warn("Received Kafka message without correlation ID: {}", responseBody);
                 }
             });
-            
-        // Ruta adicional para manejar errores generales
-        from("direct:handleError")
+
+                // Ruta adicional para manejar errores generales
+            from("direct:handleError")
             .routeId("error-handler")
             .process(exchange -> {
                 Exception ex = exchange.getProperty(Exchange.EXCEPTION_CAUGHT, Exception.class);
@@ -281,7 +287,6 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
             })
             .log("Error handled: ${body}");
     }
-
       /**
      * Método para manejar un error HTTP y propagarlo en la respuesta
      */

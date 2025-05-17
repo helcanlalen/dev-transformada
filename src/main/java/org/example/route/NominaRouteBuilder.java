@@ -108,7 +108,5 @@ public class NominaRouteBuilder extends KafkaToLogRoute {
                 }
             });
         }
-
-    }
     
 }
